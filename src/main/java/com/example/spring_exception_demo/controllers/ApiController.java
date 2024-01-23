@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.*;
 public class ApiController {
 
     @GetMapping("/test/{id}")
-    public String getTest(@PathVariable int id) throws IdNotFoundException {
+    public String getTest(@PathVariable int id) throws IdNotFoundException, OverNineThousandException {
 
-
-
+        if(id > 9000){
+            throw new OverNineThousandException(id);
+        }
 
 
         if (id > 10) {
